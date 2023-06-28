@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Property Price Prediction</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+
+        .center {
+            text-align: center;
+            margin: 0 auto;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            text-align: left;
+        }
+
+        .center-text {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <h1 class="center-text">Property Price Prediction</h1>
+        <form action="/" method="POST">
+            <label for="room_number">Number of Rooms:</label>
+            <input type="number" id="room_number" name="room_number" required><br><br>
+
+            <label for="area">Area (in sq. meters):</label>
+            <input type="number" id="area" name="area" required><br><br>
+
+
+            <label for="type">Type:</label>
+            <select id="type" name="type" required>
+                <option value="1">בית פרטי</option>
+                <option value="0">דירת גן</option>
+                <option value="0">דירת נופש</option>
+                <option value="1">פנטהאוז</option>
+                <option value="1">מיני פנטהאוז</option>
+                <option value="1">טריפלקס</option>
+                <option value="0">דירה</option>
+                <option value="0">מגרש</option>
+                <option value="1">קוטג' טורי</option>
+                <option value="1"> דופלקס</option>
+                <option value="1"> דו משפחתי</option>
+                <option value="1"> קוטג'</option>
+
+            </select><br><br>
+            
+             <label for="City"> City:</label>
+            <select id="City" name="City" required>
+                <option value="1">תל אביב </option>
+                <option value="0">ירושלים</option>
+                <option value="1">כפר סבא</option>
+                <option value="1">יהוד מונסון</option>
+                <option value="1">רמת גן</option>
+                <option value="1">בת ים</option>
+                <option value="1">הרצליה</option>
+                <option value="1">ראשון לציון</option>
+                <option value="1">מודיעין מכבים רעות</option>
+                <option value="1">הוד השרון</option>
+                <option value="1">חולון</option>
+                <option value="1">נס ציונה</option>
+                <option value="1">פתח תקווה</option>
+                <option value="1">רחובות</option>
+                <option value="0">קרית ביאליק</option>
+                <option value="0">בית שאן</option>
+                <option value="0"> נוף הגליל</option>
+                <option value="0">חיפה</option>
+                <option value="0">נתניה</option>
+                <option value="0"> אילת</option>
+                <option value="1">רעננה </option>
+                <option value="0">  באר שבע</option>
+                <option value="0">דימונה</option>
+                <option value="0">  צפת </option>
+                <option value="0">נהריה</option>
+                <option value="0">זכרון יעקב</option>
+            </select><br><br>
+ 
+
+           <label for="has_parking">Has Parking:</label>
+            <select id="has_parking" name="has_parking" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select><br><br>
+
+            <label for="has_storage">Has Storage:</label>
+            <select id="has_storage" name="has_storage" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select><br><br>
+
+            <label for="has_balcony">Has Balcony:</label>
+            <select id="has_balcony" name="has_balcony" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select><br><br>
+
+            <label for="has_mamad">Has Mamad:</label>
+            <select id="has_mamad" name="has_mamad" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select><br><br>
+
+            <label for="has_elevator">Has Elevator:</label>
+            <select id="has_elevator" name="has_elevator" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select><br><br>
+
+            <label for="has_air_condition">Has Air Conditioning:</label>
+            <select id="has_air_condition" name="has_air_condition" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select><br><br>
+
+            <label for="handicap_friendly">Handicap Friendly:</label>
+            <select id="handicap_friendly" name="handicap_friendly" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select><br><br>
+
+            <input type="submit" value="Predict Price">
+            <button type="button" onclick="resetForm()">Delete Details</button>
+        </form>
+
+        {% if predicted_price %}
+            <div class="center-text" id="predicted_price_section">
+                <h2>Predicted Price:</h2>
+                <p>{{ predicted_price }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+<script>
+    function resetForm() {
+        document.getElementById("room_number").value = "";
+        document.getElementById("area").value = "";
+        document.getElementById("has_parking").value = "0";
+        document.getElementById("has_storage").value = "0";
+        document.getElementById("has_balcony").value = "0";
+        document.getElementById("has_mamad").value = "0";
+        document.getElementById("type").value = "1";
+        document.getElementById("city").value = "";
+        document.getElementById("has_elevator").value = "0";
+        document.getElementById("has_air_condition").value = "0";
+        document.getElementById("handicap_friendly").value = "0";
+        document.getElementById("predicted_price_section").style.display = "none";
+    }
+</script>
+</body>
+</html>
